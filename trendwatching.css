@@ -1,5 +1,9 @@
 /* CSS declarations go here */
 
+img {
+  max-width: 100%;
+}
+
 body {
   font-family: sans-serif;
   background-color: #315481;
