@@ -9,9 +9,22 @@
 
 		  {{> hello}}
 		  {{> loginButtons}}
-		  </header>
+	    </header>
+
+		  {{> imageUpload}}
     </div>
 </body>
+
+<template name="imageUpload">
+	<input type="file"/>
+	{{#if imageId}}
+		<div id='imageUploadContainer'>
+			Upload successful!<br/>
+			<img src="{{c.url imageId format=format}}">
+		</div>
+	{{/if}}
+</template>
+
 
 <template name="hello">
   <button>Click Me</button>
