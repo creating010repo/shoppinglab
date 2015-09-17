@@ -38,10 +38,7 @@ if (Meteor.isClient) {
     //     };
     //   };
     //   return tagNames;
-    // },
-    imageLocation: function () {
-      return ImageEntries.location.find();
-    }
+    // }
   });
 
   Template.imageListing.helpers({
@@ -55,8 +52,12 @@ if (Meteor.isClient) {
       return Session.get('imageId');
     }
   });
+
   Template.imageUpload.events({
     "click button[id='uploadSubmit']": function(e) {
+      console.log('button pushed!');
+      if (($('#formatted_address')[0].innerHTML)) {
+        console.log('upload happening');
       var files;
       files = $('#uploadFile')[0].files;
       return Cloudinary.upload(files, {
@@ -69,6 +70,8 @@ if (Meteor.isClient) {
        
         ImageEntries.insert({
           public_id: res.public_id,
+          owner: Meteor.userId(),           // _id of logged in user
+          username: Meteor.user().username,  // username of logged in user
           sourceURL: $('#sourceURL')[0].value,
           formatted_address: $('#formatted_address')[0].innerHTML,
           gps: $('#gps')[0].innerHTML,
@@ -77,6 +80,7 @@ if (Meteor.isClient) {
         })
 
       });
+      };
 
     }
   });
