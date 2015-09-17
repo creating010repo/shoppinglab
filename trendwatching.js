@@ -67,19 +67,19 @@ if (Meteor.isClient) {
         console.log("Upload Error: " + err);
         console.log(res);
         Session.set('imageId', res.public_id);    
-       
-        ImageEntries.insert({
-          public_id: res.public_id,
-          owner: Meteor.userId(),           // _id of logged in user
-          username: Meteor.user().username,  // username of logged in user
-          sourceURL: $('#sourceURL')[0].value,
-          formatted_address: $('#formatted_address')[0].innerHTML,
-          gps: $('#gps')[0].innerHTML,
-          comment: $('#imageComment')[0].value
-          // tags: imgTagIds
-        })
+            
+          ImageEntries.insert({
+            public_id: res.public_id,
+            owner: Meteor.userId(),           // _id of logged in user
+            username: Meteor.user().username,  // username of logged in user
+            sourceURL: $('#sourceURL')[0].value,
+            formatted_address: $('#formatted_address')[0].innerHTML,
+            gps: $('#gps')[0].innerHTML,
+            comment: $('#imageComment')[0].value
+            // tags: imgTagIds
+          })
 
-      });
+        });
       };
 
     }
@@ -96,9 +96,6 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
-
-
-
 
 
 // imgTagIds = [];
