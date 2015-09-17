@@ -14,7 +14,7 @@ if (Meteor.isClient) {
     cloud_name: "trendwatching"
   });
 
-  Template.geocompleteExample.rendered = function () {
+  Template.geocomplete.rendered = function () {
     this.autorun(function () {
       // Wait for API to be loaded
       if (GoogleMaps.loaded()) {
@@ -26,19 +26,19 @@ if (Meteor.isClient) {
   }
 
   Template.imageDisplay.helpers({
-    tagNames: function(tagIdArray) {
-      tagNames = []
-      if (tagIdArray) {
-        for (var i = tagIdArray.length - 1; i >= 0; i--) {
-          currTagId = tagIdArray[i];
-          currTagName = Tags.findOne(currTagId);
-          if (currTagName) {
-            tagNames.push(currTagName.name);
-          };
-        };
-      };
-      return tagNames;
-    },
+    // tagNames: function(tagIdArray) {
+    //   tagNames = []
+    //   if (tagIdArray) {
+    //     for (var i = tagIdArray.length - 1; i >= 0; i--) {
+    //       currTagId = tagIdArray[i];
+    //       currTagName = Tags.findOne(currTagId);
+    //       if (currTagName) {
+    //         tagNames.push(currTagName.name);
+    //       };
+    //     };
+    //   };
+    //   return tagNames;
+    // },
     imageLocation: function () {
       return ImageEntries.location.find();
     }
@@ -112,7 +112,9 @@ if (Meteor.isClient) {
         ImageEntries.insert({
           public_id: res.public_id,
           sourceURL: $('#sourceURL')[0].value,
-          location: $('#location')[0].innerHTML
+          formatted_address: $('#formatted_address')[0].innerHTML,
+          gps: $('#gps')[0].innerHTML,
+          comment: $('#imageComment')[0].value
           // tags: imgTagIds
         })
 

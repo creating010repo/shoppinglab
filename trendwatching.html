@@ -23,7 +23,7 @@
 		<form id="uploadForm" onsubmit="return false;" method="post">
 				<div class="form-group">
 					<label for="uploadFile">Image upload</label>
-					<input type="file" accept="image" id="uploadFile"/>
+					<input type="file" accept="image" id="uploadFile" required/>
 				</div>
 				<div class="form-group">
 				<label for="place">Location</label>
@@ -33,7 +33,10 @@
 					<label for="sourceURL">Internet source</label>
 					<input type="text" class="form-control" name="source" id="sourceURL" placeholder="Internet source"/>
 				</div>
-
+				<div class="form-group">
+					<label for="sourceURL">Note</label>
+					<textarea class="form-control" rows="3" id="imageComment"></textarea>
+				</div>
 
 
 <!-- 				<div class="form-group">
@@ -76,7 +79,9 @@
 					<img class="img-responsive" src="{{c.url public_id format=format}}">
 			</div>
 			<div class="caption">
-				<div class="tags label label-default">{{imageLocation}}</div>
+				<p>{{comment}}</p>
+				<span class="glyphicon glyphicon-globe"></span><a href="{{sourceURL}}" class="small"> {{sourceURL}}</a><br/>
+				<span class="glyphicon glyphicon-map-marker"></span><span class="small"> {{formatted_address}}</span>
 				<!-- <div class="tags label label-default">{{tagNames tags}}</div> -->
 			</div>
 		</div>
@@ -85,7 +90,7 @@
 </template>
 
 <template name="geocomplete">
-  <input id="place" class="form-control" type="text" name="place" placeholder="Type the location...">
-  <span class="help-block small" name="formatted_address"></span>
-  <span class="help-block small hidden" name="location" id="location"></span>
+  <input id="place" class="form-control" type="text" name="place" placeholder="Type the location..." required>
+  <span class="help-block small" name="formatted_address" id="formatted_address"></span>
+  <span class="help-block small hidden" name="location" id="gps"></span>
 </template>
