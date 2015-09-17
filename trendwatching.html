@@ -3,52 +3,70 @@
 </head>
 
 <body>
-	<div class="container">
-		<header>
+  <div class="container">
+		<div class="navbar-header">
 		  <h1>New Frontiers - trend upload</h1>
 		  {{> loginButtons}}
-	    </header>
-
-		  {{> imageUpload}}
-		  {{> imageListing}}
-    </div>
+	  </div>
+	  </div>
+	<div class="container">  
+		<div class="row">
+			{{> imageUpload}}
+			{{> imageListing}}
+		</div>		  	
+	</div>	
 </body>
 
 <template name="imageUpload">
-	<form id="uploadForm" onsubmit="return false;" method="post">
-		<input type="file" id="uploadFile"/>
-		<input type="text" name="source" id="sourceURL" placeholder="Internet source"/>
-		<input type="text" name="tag1" id="tag1" placeholder="Tag 1"/>
-		<input type="text" name="tag2" id="tag2" placeholder="Tag 2"/>
-		<input type="text" name="tag3" id="tag3" placeholder="Tag 3"/>
-		<button id="uploadSubmit">Upload</button>
-	</form>
-	{{#if imageId}}
-		<div id='imageUploadContainer'>
-			Upload successful!<br/>
-			<img src="{{c.url imageId format=format}}">
-		</div>
-	{{/if}}
+	<div class="col-md-4">
+		<form id="uploadForm" onsubmit="return false;" method="post">
+				<div class="form-group">
+					<label for="uploadFile">Image upload</label>
+					<input type="file" id="uploadFile"/>
+				</div>
+				<div class="form-group">
+					<label for="sourceURL">Internet source</label>
+					<input type="text" name="source" id="sourceURL" placeholder="Internet source"/>
+				</div>	
+				<div class="form-group">
+					<label for="tag1">Tag1</label>
+					<input type="text" name="tag1" id="tag1" placeholder="Tag 1"/>
+				</div>	
+				<div class="form-group">
+					<label for="tag2">Tag2</label>
+					<input type="text" name="tag2" id="tag2" placeholder="Tag 2"/>
+				</div>	
+				<div class="form-group">
+					<label for="tag3">Tag3</label>
+					<input type="text" name="tag3" id="tag3" placeholder="Tag 3"/>
+				</div>
+				<button class="btn btn-default" id="uploadSubmit">Upload</button>	
+
+		</form>
+		{{#if imageId}}
+			<div id='imageUploadContainer'>
+				Upload successful!<br/>
+				<img class="img-responsive" src="{{c.url imageId format=format}}">
+			</div>
+		{{/if}}
+	</div>
 </template>
 
 <template name="imageListing">
-	<div>
-		
 	  {{#each imageEntries}}
 	    {{> imageDisplay}}
 	  {{/each}}
-		
-	</div>
 </template>
 
 <template name="imageDisplay">
-	<div class="imageListElement">
-		{{#if public_id}}
-			<img src="{{c.url public_id format=format}}">
-		{{/if}}
-		<div class="tags">{{tagNames tags}}</div>
-		
-	</div>
+	<div class="col-md-4">
+		<div class="imageListElement">
+			{{#if public_id}}
+				<img class="img-responsive" src="{{c.url public_id format=format}}">
+			{{/if}}
+			<div class="tags">{{tagNames tags}}</div>
+		</div>
+	</div>	
 </template>
 
 <template name="hello">

@@ -1,5 +1,5 @@
 /* CSS declarations go here */
-
+/*
 img {
   max-width: 100%;
 }
@@ -60,8 +60,6 @@ h1 {
 }
 
 form {
-  /*margin-top: 10px;*/
-  /*margin-bottom: -10px;*/
   position: relative;
 }
 
@@ -139,4 +137,4 @@ header .hide-completed {
   .new-task input {
     padding-bottom: 5px;
   }
-}
+}*/
