@@ -12,25 +12,30 @@
 	<div class="container">  
 		<div class="row">
 			{{> imageUpload}}
+			<!-- <div class="col-sm-6 map"></div> -->
 			{{> imageListing}}
 		</div>		  	
 	</div>	
 </body>
 
 <template name="imageUpload">
-	<div class="col-md-4">
+	<div class="thumbnail col-md-4">
 		<form id="uploadForm" onsubmit="return false;" method="post">
 				<div class="form-group">
 					<label for="uploadFile">Image upload</label>
-					<input type="file" id="uploadFile"/>
+					<input type="file" accept="image" id="uploadFile"/>
 				</div>
 				<div class="form-group">
-				  {{> geocompleteExample}}
+				<label for="place">Location</label>
+				  {{> geocomplete}}
 			  </div>
 				<div class="form-group">
 					<label for="sourceURL">Internet source</label>
-					<input type="text" name="source" id="sourceURL" placeholder="Internet source"/>
+					<input type="text" class="form-control" name="source" id="sourceURL" placeholder="Internet source"/>
 				</div>
+
+
+
 <!-- 				<div class="form-group">
 					<label for="tag1">Tag1</label>
 					<input type="text" name="tag1" id="tag1" placeholder="Tag 1"/>
@@ -43,7 +48,9 @@
 					<label for="tag3">Tag3</label>
 					<input type="text" name="tag3" id="tag3" placeholder="Tag 3"/>
 				</div> -->
-				<button class="btn btn-default" id="uploadSubmit">Upload</button>	
+				<button class="btn btn-default" id="uploadSubmit">
+					Upload <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+				</button>	
 
 		</form>
 		{{#if imageId}}
@@ -69,14 +76,16 @@
 					<img class="img-responsive" src="{{c.url public_id format=format}}">
 			</div>
 			<div class="caption">
-				<div class="tags label label-default">{{tagNames tags}}</div>
+				<div class="tags label label-default">{{imageLocation}}</div>
+				<!-- <div class="tags label label-default">{{tagNames tags}}</div> -->
 			</div>
 		</div>
 		{{/if}}
 	</div>	
 </template>
 
-<template name="geocompleteExample">
-  <input id="place2" type="text" name="place" placeholder="Type the location...">
-  <div id="map"></div>
+<template name="geocomplete">
+  <input id="place" class="form-control" type="text" name="place" placeholder="Type the location...">
+  <span class="help-block small" name="formatted_address"></span>
+  <span class="help-block small hidden" name="location" id="location"></span>
 </template>
