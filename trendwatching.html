@@ -25,9 +25,13 @@
 					<input type="file" id="uploadFile"/>
 				</div>
 				<div class="form-group">
+				  {{> geocompleteExample}}
+			  </div>
+				<div class="form-group">
 					<label for="sourceURL">Internet source</label>
 					<input type="text" name="source" id="sourceURL" placeholder="Internet source"/>
 				</div>	
+				</div>
 				<div class="form-group">
 					<label for="tag1">Tag1</label>
 					<input type="text" name="tag1" id="tag1" placeholder="Tag 1"/>
@@ -69,3 +73,7 @@
 	</div>	
 </template>
 
+<template name="geocompleteExample">
+  <input id="place2" type="text" name="place" placeholder="Type the location...">
+  <div id="map"></div>
+</template>

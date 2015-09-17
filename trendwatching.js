@@ -3,9 +3,40 @@ Tags = new Mongo.Collection("tags");
 
 
 if (Meteor.isClient) {
+  Meteor.startup(function() {
+    GoogleMaps.load({
+      key: 'AIzaSyCkz7mV7KthVjQ_WU3GnyXPStgEgeNaK2s',
+      libraries: 'places'  // also accepts an array if you need more than one
+    });
+  });
+
   $.cloudinary.config({
     cloud_name: "trendwatching"
   });
+
+  Template.geocompleteExample.rendered = function () {
+
+    this.autorun(function () {
+      // Wait for API to be loaded
+      if (GoogleMaps.loaded()) {
+
+        // Example 1 - Autocomplete only
+        // $('#place1').geocomplete();
+
+        // Example 2 - Autocomplete + map
+        $('#place2').geocomplete({
+          map: $("#map")
+        });
+
+        // // Example 3 - Autocomplete + map + form
+        // $('#place3').geocomplete({
+        //   map: "#map2",
+        //   details: "form"
+        // });
+
+      }
+    });
+  }
 
   Template.imageDisplay.helpers({
     tagNames: function(tagIdArray) {
