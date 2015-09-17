@@ -30,7 +30,6 @@
 				<div class="form-group">
 					<label for="sourceURL">Internet source</label>
 					<input type="text" name="source" id="sourceURL" placeholder="Internet source"/>
-				</div>	
 				</div>
 				<div class="form-group">
 					<label for="tag1">Tag1</label>
@@ -63,13 +62,17 @@
 </template>
 
 <template name="imageDisplay">
-	<div class="col-md-4">
-		<div class="imageListElement">
-			{{#if public_id}}
-				<img class="img-responsive" src="{{c.url public_id format=format}}">
-			{{/if}}
-			<div class="tags">{{tagNames tags}}</div>
+	<div class="col-sm-6 col-md-4">
+		{{#if public_id}}
+		<div class="thumbnail">	
+			<div class="imageListElement">
+					<img class="img-responsive" src="{{c.url public_id format=format}}">
+			</div>
+			<div class="caption">
+				<div class="tags label label-default">{{tagNames tags}}</div>
+			</div>
 		</div>
+		{{/if}}
 	</div>	
 </template>
 
