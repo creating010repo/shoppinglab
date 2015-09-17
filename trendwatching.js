@@ -66,48 +66,6 @@ if (Meteor.isClient) {
         console.log("Upload Error: " + err);
         console.log(res);
         Session.set('imageId', res.public_id);    
-
-        // imgTagIds = [];
-
-        // tagName = $('#tag1')[0].value;
-        // var tagExists = Tags.find({name:tagName}).fetch();
-        // if (tagExists.length > 0 ) {
-        //   imgTagIds.push(tagExists[0]._id);
-        // }
-        // else {
-        //   newTagId = (new Meteor.Collection.ObjectID())._str;
-        //   imgTagIds.push(newTagId);
-        //   Tags.insert({
-        //     _id: newTagId,
-        //     name: tagName
-        //   }); 
-        // }
-        // tagName = $('#tag2')[0].value;
-        // var tagExists = Tags.find({name:tagName}).fetch();
-        // if (tagExists.length > 0 ) {
-        //   imgTagIds.push(tagExists[0]._id);
-        // }
-        // else {
-        //   newTagId = (new Meteor.Collection.ObjectID())._str;
-        //   imgTagIds.push(newTagId);
-        //   Tags.insert({
-        //     _id: newTagId,
-        //     name: tagName
-        //   }); 
-        // }
-        // tagName = $('#tag3')[0].value;
-        // var tagExists = Tags.find({name:tagName}).fetch();
-        // if (tagExists.length > 0 ) {
-        //   imgTagIds.push(tagExists[0]._id);
-        // }
-        // else {
-        //   newTagId = (new Meteor.Collection.ObjectID())._str;
-        //   imgTagIds.push(newTagId);
-        //   Tags.insert({
-        //     _id: newTagId,
-        //     name: tagName
-        //   }); 
-        // }
        
         ImageEntries.insert({
           public_id: res.public_id,
@@ -134,3 +92,49 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
+
+
+
+
+// imgTagIds = [];
+
+// tagName = $('#tag1')[0].value;
+// var tagExists = Tags.find({name:tagName}).fetch();
+// if (tagExists.length > 0 ) {
+//   imgTagIds.push(tagExists[0]._id);
+// }
+// else {
+//   newTagId = (new Meteor.Collection.ObjectID())._str;
+//   imgTagIds.push(newTagId);
+//   Tags.insert({
+//     _id: newTagId,
+//     name: tagName
+//   }); 
+// }
+// tagName = $('#tag2')[0].value;
+// var tagExists = Tags.find({name:tagName}).fetch();
+// if (tagExists.length > 0 ) {
+//   imgTagIds.push(tagExists[0]._id);
+// }
+// else {
+//   newTagId = (new Meteor.Collection.ObjectID())._str;
+//   imgTagIds.push(newTagId);
+//   Tags.insert({
+//     _id: newTagId,
+//     name: tagName
+//   }); 
+// }
+// tagName = $('#tag3')[0].value;
+// var tagExists = Tags.find({name:tagName}).fetch();
+// if (tagExists.length > 0 ) {
+//   imgTagIds.push(tagExists[0]._id);
+// }
+// else {
+//   newTagId = (new Meteor.Collection.ObjectID())._str;
+//   imgTagIds.push(newTagId);
+//   Tags.insert({
+//     _id: newTagId,
+//     name: tagName
+//   }); 
+// }
