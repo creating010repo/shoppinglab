@@ -7,7 +7,7 @@
 meteor-platform
 autopublish
 insecure
-accounts-ui
 accounts-password
 lepozepo:cloudinary
 twbs:bootstrap
+ian:accounts-ui-bootstrap-3
