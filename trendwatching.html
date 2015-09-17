@@ -6,27 +6,33 @@
   <div class="container">
 		<div class="navbar-header">
 		  <h1>ShoppingLab - trend upload</h1>
-		  {{> loginButtons}}
+		  <ul class="nav navbar-nav">
+		  	<li class="dropdown">
+				  {{> loginButtons}}
+			  </li>
+		  </ul>
 	  </div>
-	  </div>
+  </div>
+	{{#if currentUser}}  
 	<div class="container">  
 		<div class="row">
 			{{> imageUpload}}
 			<!-- <div class="col-sm-6 map"></div> -->
 			{{> imageListing}}
 		</div>		  	
-	</div>	
+	</div>
+	{{/if}}	
 </body>
 
 <template name="imageUpload">
 	<div class="thumbnail col-md-4">
 		<form id="uploadForm" onsubmit="return false;" method="post">
 				<div class="form-group">
-					<label for="uploadFile">Image upload</label>
+					<label for="uploadFile">Image upload</label><span class="text-warning"> *</span>
 					<input type="file" accept="image" id="uploadFile" required/>
 				</div>
 				<div class="form-group">
-				<label for="place">Location</label>
+				<label for="place">Location</label><span class="text-warning"> *</span>
 				  {{> geocomplete}}
 			  </div>
 				<div class="form-group">
