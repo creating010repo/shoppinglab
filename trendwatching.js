@@ -50,8 +50,6 @@ if (Meteor.isClient) {
           };
         };
       };
-
-      
       return tagNames;
     }
   });
@@ -60,24 +58,6 @@ if (Meteor.isClient) {
     imageEntries: function () {
       return ImageEntries.find();
     }
-
-  });
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
-
-  Template.imageListing.helpers({
-
   });
 
   Template.imageUpload.helpers({
@@ -100,7 +80,6 @@ if (Meteor.isClient) {
         Session.set('imageId', res.public_id);    
 
         imgTagIds = [];
-
 
         tagName = $('#tag1')[0].value;
         var tagExists = Tags.find({name:tagName}).fetch();
@@ -156,6 +135,7 @@ if (Meteor.isClient) {
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   });
+
 }
 
 if (Meteor.isServer) {
