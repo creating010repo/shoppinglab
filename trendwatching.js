@@ -6,8 +6,6 @@ if (Meteor.isClient) {
   $.cloudinary.config({
     cloud_name: "trendwatching"
   });
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
   Template.imageDisplay.helpers({
     tagNames: function(tagIdArray) {
