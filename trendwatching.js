@@ -79,7 +79,6 @@ if (Meteor.isClient) {
         var files;
         files = $('#uploadFile')[0].files;
         return Cloudinary.upload(files, {
-          folder: "staging",
           folder: "shoppinglab-production",
           exif: "TRUE"
         }, function(err, res) {
