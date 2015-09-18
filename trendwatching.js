@@ -76,6 +76,8 @@ if (Meteor.isClient) {
         return false;
       }
       if (($('#formatted_address')[0].innerHTML)) {
+        // disable the button for the upload time
+        $('#uploadSubmit').attr('disabled', true);
         Session.set('waitingSpinner', true);
 
         var files;
@@ -88,6 +90,10 @@ if (Meteor.isClient) {
             // console.log(res);
 
             Session.set('imageId', res.public_id);
+
+             
+
+            // let's put the file into the database
             Meteor.call('addImageEntry', 
               res.public_id, 
               // $('#sourceURL')[0].value,
@@ -101,9 +107,14 @@ if (Meteor.isClient) {
             $('#place')[0].value=''
             $('#gps')[0].innerHTML=''
             $('#imageComment')[0].value=''
+
+            // validation hack of URLs
             $('#urlTrouble').removeClass('show');
             $('#urlTrouble').addClass('hidden');
+
+            // disable the spinner and enable the button again
             Session.set('waitingSpinner', false);
+            $('#uploadSubmit').attr('disabled', false);
           });
 
       };
