@@ -10,6 +10,8 @@ if (Meteor.isClient) {
     });
   });
 
+  Meteor.subscribe("imageEntries");
+
   $.cloudinary.config({
     cloud_name: "trendwatching"
   });
@@ -61,7 +63,7 @@ if (Meteor.isClient) {
       var files;
       files = $('#uploadFile')[0].files;
       return Cloudinary.upload(files, {
-        folder: "secret",
+        folder: "staging",
         exif: "TRUE"
       }, function(err, res) {
         console.log("Upload Error: " + err);
@@ -95,6 +97,13 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
+  Meteor.publish("imageEntries", function(){
+    var currentUserId = this.userId;
+    // console.log(currentUserId);
+    return ImageEntries.find({
+      owner : currentUserId
+    });
+  });  
 }
 
 
