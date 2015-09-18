@@ -66,28 +66,31 @@ if (Meteor.isClient) {
       console.log('button pushed!');
       if (($('#formatted_address')[0].innerHTML)) {
         console.log('upload happening');
-      var files;
-      files = $('#uploadFile')[0].files;
-      return Cloudinary.upload(files, {
-        folder: "staging",
-        exif: "TRUE"
-      }, function(err, res) {
-        console.log("Upload Error: " + err);
-        console.log(res);
-        Session.set('imageId', res.public_id);    
-            
-          ImageEntries.insert({
-            public_id: res.public_id,
-            owner: Meteor.userId(),           // _id of logged in user
-            username: Meteor.user().username,  // username of logged in user
-            sourceURL: $('#sourceURL')[0].value,
-            formatted_address: $('#formatted_address')[0].innerHTML,
-            gps: $('#gps')[0].innerHTML,
-            comment: $('#imageComment')[0].value
-            // tags: imgTagIds
-          })
+        //here 'show' spinner
 
-        });
+        var files;
+        files = $('#uploadFile')[0].files;
+        return Cloudinary.upload(files, {
+          folder: "staging",
+          exif: "TRUE"
+        }, function(err, res) {
+            console.log("Upload Error: " + err);
+            console.log(res);
+            Session.set('imageId', res.public_id); 
+            Meteor.call('addImageEntry', 
+              res.public_id, 
+              $('#sourceURL')[0].value,
+              $('#formatted_address')[0].innerHTML,
+              $('#gps')[0].innerHTML,
+              $('#imageComment')[0].value); //end addImageEntry call
+            $('#uploadFile')[0].value=''
+            $('#sourceURL')[0].value=''
+            $('#formatted_address')[0].innerHTML=''
+            $('#gps')[0].innerHTML=''
+            $('#imageComment')[0].value=''
+            //here hide spinner
+          });
+
       };
 
     }
@@ -111,6 +114,25 @@ if (Meteor.isServer) {
     });
   });  
 }
+
+Meteor.methods({
+  addImageEntry: function(public_id, sourceURL,formatted_address, gps,comment){
+    //here is the code
+    if (! Meteor.userId()) {
+      throw new Meteor.Error("not-authorized");
+    }
+    ImageEntries.insert({
+      public_id: public_id,
+      owner: this.userId,           // _id of logged in user
+      username: Meteor.user().username,  // username of logged in user
+      sourceURL: sourceURL,
+      formatted_address: formatted_address,
+      gps: gps,
+      comment: comment
+      // tags: imgTagIds
+    })
+  }
+})
 
 
 // imgTagIds = [];

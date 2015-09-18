@@ -11,7 +11,9 @@
 				  {{> loginButtons}}
 			  </li>
 		  </ul>
-		  <span class="label">{{> imageCounter}}00</span>
+		  {{#if currentUser}}
+		  	<span class="label">{{> imageCounter}}</span>
+		  {{/if}}
 	  </div>
   </div>
 	{{#if currentUser}}  
