@@ -64,16 +64,16 @@ if (Meteor.isClient) {
 
   Template.imageUpload.events({
     "click button[id='uploadSubmit']": function(e) {
-      console.log('button pushed!');
+      // console.log('button pushed!');
       regexMatch = $('#sourceURL')[0].value.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/))
-      console.log(regexMatch);
+      // console.log(regexMatch);
       if ($('#sourceURL')[0].value && regexMatch==null){
         $('#urlTrouble').removeClass('hidden');
         $('#urlTrouble').addClass('show');
         return false;
       }
       if (($('#formatted_address')[0].innerHTML)) {
-        console.log('upload happening');
+        // console.log('upload happening');
         //here 'show' spinner
 
         var files;
@@ -83,7 +83,7 @@ if (Meteor.isClient) {
           exif: "TRUE"
         }, function(err, res) {
             console.log("Upload Error: " + err);
-            console.log(res);
+            // console.log(res);
             Session.set('imageId', res.public_id);
             Meteor.call('addImageEntry', 
               res.public_id, 
