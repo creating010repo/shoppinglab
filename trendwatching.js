@@ -58,6 +58,9 @@ if (Meteor.isClient) {
   Template.imageUpload.helpers({
     imageId: function () {
       return Session.get('imageId');
+    },
+    waitingSpinner: function () {
+      return Session.get('waitingSpinner');
     }
   });
 
@@ -73,8 +76,7 @@ if (Meteor.isClient) {
         return false;
       }
       if (($('#formatted_address')[0].innerHTML)) {
-        // console.log('upload happening');
-        //here 'show' spinner
+        Session.set('waitingSpinner', true);
 
         var files;
         files = $('#uploadFile')[0].files;
@@ -84,6 +86,7 @@ if (Meteor.isClient) {
         }, function(err, res) {
             console.log("Upload Error: " + err);
             // console.log(res);
+
             Session.set('imageId', res.public_id);
             Meteor.call('addImageEntry', 
               res.public_id, 
@@ -100,7 +103,7 @@ if (Meteor.isClient) {
             $('#imageComment')[0].value=''
             $('#urlTrouble').removeClass('show');
             $('#urlTrouble').addClass('hidden');
-            //here hide spinner
+            Session.set('waitingSpinner', false);
           });
 
       };

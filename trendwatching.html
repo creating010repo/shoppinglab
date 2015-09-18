@@ -66,6 +66,10 @@
 				</button>	
 
 		</form>
+		{{#if waitingSpinner}}
+			{{> spinner}}
+		{{/if}}
+		
 		{{#if imageId}}
 			<div id='imageUploadContainer'>
 				Upload successful!<br/>
@@ -78,6 +82,7 @@
 <template name="imageListing">
 	  {{#each imageEntries}}
 	    {{> imageDisplay}}
+
 	  {{/each}}
 </template>
 
