@@ -40,7 +40,8 @@
 			  </div>
 				<div class="form-group">
 					<label for="sourceURL">Internet source</label>
-					<input type="text" class="form-control" name="source" id="sourceURL" placeholder="Internet source"/>
+					<span id="urlTrouble" class="hidden">Did you put http:// in front?</span>
+					<input type="text" class="form-control" name="source" id="sourceURL" placeholder="http://"/>
 				</div>
 				<div class="form-group">
 					<label for="sourceURL">Note</label>
@@ -81,7 +82,7 @@
 </template>
 
 <template name="imageDisplay">
-	<div class="col-sm-6 col-md-4">
+	<div class="col-md-4">
 		{{#if public_id}}
 		<div class="thumbnail">	
 			<div class="imageListElement">
