@@ -49,6 +49,12 @@ if (Meteor.isClient) {
     }
   });
 
+  Template.imageCounter.helpers({
+    imageCount: function() {
+      return ImageEntries.find({owner : Meteor.userId()}).count()
+    }
+  });
+
   Template.imageUpload.helpers({
     imageId: function () {
       return Session.get('imageId');

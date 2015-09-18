@@ -11,6 +11,7 @@
 				  {{> loginButtons}}
 			  </li>
 		  </ul>
+		  <span class="label">{{> imageCounter}}00</span>
 	  </div>
   </div>
 	{{#if currentUser}}  
@@ -95,6 +96,10 @@
 	</div>	
 </template>
 
+<template name="imageCounter">
+	<span class="badge">{{imageCount}}</span>
+
+</template>
 <template name="geocomplete">
   <input id="place" class="form-control" type="text" name="place" placeholder="Type the location..." required>
   <span class="help-block small" name="formatted_address" id="formatted_address"></span>
