@@ -28,7 +28,7 @@
 </body>
 
 <template name="imageUpload">
-	<div class="thumbnail col-md-4">
+	<div class="thumbnail col-md-4 col-sm-12 col-xs-12">
 		<form id="uploadForm" onsubmit="return false;" method="post">
 				<div class="form-group">
 					<label for="uploadFile">Image upload</label><span class="text-warning"> *</span>
@@ -87,11 +87,11 @@
 </template>
 
 <template name="imageDisplay">
-	<div class="col-md-4">
+	<div class="col-md-4 col-sm-12 col-xs-12">
 		{{#if public_id}}
 		<div class="thumbnail">	
 			<div class="imageListElement">
-					<img class="img-responsive" src="{{c.url public_id width=484 height=400 crop="fit"}}">
+					<img class="img-responsive" src="{{c.url public_id width=484 height=400 crop="fill"}}">
 			</div>
 			<div class="caption">
 				<p>{{comment}}</p>
