@@ -6,6 +6,7 @@ Meteor.startup(function() {
 });
 
 Meteor.subscribe("imageEntries");
+Meteor.subscribe("allImageEntries");
 
 $.cloudinary.config({
   cloud_name: "trendwatching"
@@ -40,6 +41,11 @@ Template.imageDisplay.helpers({
 
 Template.imageListing.helpers({
   imageEntries: function () {
+    return ImageEntries.find();
+  }
+});
+Template.allImageListing.helpers({
+  allImageEntries: function () {
     return ImageEntries.find();
   }
 });

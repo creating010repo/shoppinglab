@@ -3,6 +3,21 @@
 </head>
 
 <body>
+</body>
+
+<template name="userLoggedIn">
+	{{> header}}
+	{{#if currentUser}}  
+	<div class="container">  
+		<div class="row">
+			{{> imageUpload}}
+			{{> imageListing}}
+		</div>		  	
+	</div>
+	{{/if}}	
+</template>
+
+<template name="header">
   <div class="container">
 		<div class="navbar-header">
 		  <h1>ShoppingLab - Signals upload</h1>
@@ -16,16 +31,38 @@
 		  {{/if}}
 	  </div>
   </div>
-	{{#if currentUser}}  
-	<div class="container">  
+</template>	
+
+<template name="overviewDashboard">
+	{{> header}}
+	<div class="container">
 		<div class="row">
-			{{> imageUpload}}
-			<!-- <div class="col-sm-6 map"></div> -->
-			{{> imageListing}}
-		</div>		  	
+			<p>Hello dashboard!</p>	
+			{{> allImageListing}}
+		</div>
 	</div>
-	{{/if}}	
-</body>
+</template>
+
+<template name="allImageListing">
+	{{#each allImageEntries}}
+  	<div class="col-md-4 col-sm-12 col-xs-12">
+		<!-- {{#if currentUser}} -->
+		<div class="thumbnail">	
+			<div class="imageListElement">
+				<img class="img-responsive" src="{{c.url public_id width=484 height=400 crop="fill"}}">
+			</div>
+			<div class="caption">
+				<p>{{comment}}</p>
+				<span class="glyphicon glyphicon-globe"></span><a href="{{sourceURL}}" class="small"> {{sourceURL}}</a><br/>
+				<span class="glyphicon glyphicon-map-marker"></span><span class="small"> {{formatted_address}}</span>
+				<!-- <div class="tags label label-default">{{tagNames tags}}</div> -->
+			</div>
+		</div>
+		<!-- {{/if}} -->
+		</div>
+  {{/each}}
+</template>
+
 
 <template name="imageUpload">
 	<div class="thumbnail col-md-4 col-sm-12 col-xs-12">
