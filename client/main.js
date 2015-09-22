@@ -1,6 +1,7 @@
+
 Meteor.startup(function() {
   GoogleMaps.load({
-    key: 'AIzaSyCkz7mV7KthVjQ_WU3GnyXPStgEgeNaK2s',
+    key: Meteor.settings.public.googleMapsApiKey,
     libraries: 'places'  // also accepts an array if you need more than one
   });
 });
@@ -9,7 +10,7 @@ Meteor.subscribe("imageEntries");
 Meteor.subscribe("allImageEntries");
 
 $.cloudinary.config({
-  cloud_name: "trendwatching"
+  cloud_name: Meteor.settings.public.cloudinaryCloud
 });
 
 Template.geocomplete.rendered = function () {

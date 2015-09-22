@@ -1,7 +1,9 @@
 Meteor.startup(function () {
     // code to run on server at startup
     Cloudinary.config({
-      cloud_name: 'trendwatching',
+      cloud_name: Meteor.settings.public.cloudinaryCloud,
+      api_key: Meteor.settings.cloudinaryAPIKey,
+      api_secret: Meteor.settings.cloundinaryAPISecret
     });
   });
 
