@@ -37,8 +37,20 @@
 	{{> header}}
 	<div class="container">
 		<div class="row">
-			<p>Hello dashboard!</p>	
+			{{> allUserListing}}
 			{{> allImageListing}}
+		</div>
+	</div>
+</template>
+
+<template name="allUserListing">
+	<div class="col-md-4 col-sm-12 col-xs-12">
+		<div class="thumbnail">
+		{{#each allUsers}}
+			<ul>
+				<li>{{username}} <span class="badge">{{imageCount}}</span></li>
+			</ul>
+		{{/each}}
 		</div>
 	</div>
 </template>

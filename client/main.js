@@ -8,6 +8,7 @@ Meteor.startup(function() {
 
 Meteor.subscribe("imageEntries");
 Meteor.subscribe("allImageEntries");
+Meteor.subscribe("allUsers");
 
 $.cloudinary.config({
   cloud_name: Meteor.settings.public.cloudinaryCloud
@@ -23,6 +24,16 @@ Template.geocomplete.rendered = function () {
     }
   });
 }
+
+Template.allUserListing.helpers({
+  allUsers: function(){
+    return Meteor.users.find();
+  }
+  // ,
+  // imageCount: function() {
+  //   return ImageEntries.find({owner : Meteor.userId()}).count()
+  // }
+});
 
 Template.imageDisplay.helpers({
   // tagNames: function(tagIdArray) {
@@ -42,9 +53,12 @@ Template.imageDisplay.helpers({
 
 Template.imageListing.helpers({
   imageEntries: function () {
-    return ImageEntries.find();
-  }
+    return ImageEntries.find({
+        owner : Meteor.userId()
+      })
+    }
 });
+
 Template.allImageListing.helpers({
   allImageEntries: function () {
     return ImageEntries.find();
