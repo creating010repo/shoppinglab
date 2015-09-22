@@ -82,10 +82,17 @@ Template.imageUpload.events({
       $('#uploadSubmit').attr('disabled', true);
       Session.set('waitingSpinner', true);
 
+      var cloudinaryFolder;
+      if (Meteor.absoluteUrl() == "http://shoppinglab.meteor.com/") {
+        cloudinaryFolder = "shoppinglab-production";
+      } else {
+        cloudinaryFolder = "testing";
+      };
+
       var files;
       files = $('#uploadFile')[0].files;
       return Cloudinary.upload(files, {
-        folder: "shoppinglab-production",
+        folder: cloudinaryFolder,
         exif: "TRUE"
       }, function(err, res) {
           console.log("Upload Error: " + err);
