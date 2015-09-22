@@ -62,9 +62,11 @@
 		<div class="thumbnail">	
 			<div class="imageListElement">
 				<img class="img-responsive" src="{{c.url public_id width=484 height=400 crop="fill"}}">
+				<span class="pull-right small"><a href="{{c.url public_id}}" target="_blank">[full]</a></span><br/>
 			</div>
 			<div class="caption">
 				<p>{{comment}}</p>
+				<span class="glyphicon glyphicon-user"></span><span class="small"> {{username}}</span><br/>
 				<span class="glyphicon glyphicon-globe"></span><a href="{{sourceURL}}" class="small"> {{sourceURL}}</a><br/>
 				<span class="glyphicon glyphicon-map-marker"></span><span class="small"> {{formatted_address}}</span>
 				<!-- <div class="tags label label-default">{{tagNames tags}}</div> -->
@@ -141,6 +143,7 @@
 		<div class="thumbnail">	
 			<div class="imageListElement">
 					<img class="img-responsive" src="{{c.url public_id width=484 height=400 crop="fill"}}">
+					<span class="pull-right small"><a href="{{c.url public_id}}" target="_blank">[full]</a></span><br/>
 			</div>
 			<div class="caption">
 				<p>{{comment}}</p>
