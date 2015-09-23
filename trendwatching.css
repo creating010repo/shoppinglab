@@ -4,6 +4,10 @@ a {
   word-wrap: break-word;
 }
 
+.deleteButton a{
+  color: lightgray;
+}
+
 /*
 img {
   max-width: 100%;
