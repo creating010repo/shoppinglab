@@ -21,7 +21,7 @@ Meteor.publish("imageEntries", function(){
 Meteor.publish("allImageEntriesDB", function(){
   //returns undefined if not logged in so check if logged in first
   if(this.userId) {
-    console.log("allImageEntriesDB "+this.userId);
+    // console.log("allImageEntriesDB "+this.userId);
     //var user is the same info as would be given in Meteor.user();
     var user = Meteor.users.findOne(this.userId);
     if (user.username == "peter" || user.username == "justien Marseille"){
