@@ -21,23 +21,28 @@ Meteor.publish("imageEntries", function(){
 Meteor.publish("allImageEntries", function(){
   //returns undefined if not logged in so check if logged in first
   if(this.userId) {
+    console.log(this.userId);
     //var user is the same info as would be given in Meteor.user();
     var user = Meteor.users.findOne(this.userId);
-    if (user.username === 'peter'){
-     return ImageEntries.find();
-      }
+    if (user.username == "peter" || user.username == "test123"){
+      return ImageEntries.find();
     }
+  }
       return null;
 });
 
-Meteor.publish("allUsers", function(){
+
+Meteor.publish("allUsersDB", function(){
+  console.log('call allusersdb '+this.userId);
   if (this.userId) {
     var user = Meteor.users.findOne(this.userId);
-    if (user.username === 'peter'){
-      return Meteor.users.find();
+    console.log(user.username);
+
+    if (user.username == "peter" || user.username == "test123"){
+      return Meteor.users.find({});
     };
   }
-    return null;
+  return null;
 });
 
 // Meteor.publish("collection", function() {

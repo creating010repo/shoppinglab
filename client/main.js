@@ -8,7 +8,7 @@ Meteor.startup(function() {
 
 Meteor.subscribe("imageEntries");
 Meteor.subscribe("allImageEntries");
-Meteor.subscribe("allUsers");
+Meteor.subscribe("allUsersDB");
 
 $.cloudinary.config({
   cloud_name: Meteor.settings.public.cloudinaryCloud
@@ -27,28 +27,36 @@ Template.geocomplete.rendered = function () {
 
 Template.allUserListing.helpers({
   allUsers: function(){
-    return Meteor.users.find();
+    if (Meteor.userId()) {
+      console.log('afds;dfjsdkjflksjdfn ');
+      var user = Meteor.users.findOne(Meteor.userId());
+      if (user.username == "peter" || user.username == "test123"){
+        return Meteor.users.find({});
+      }
+    }
+    return null;
+    
   }
-  // ,
-  // imageCount: function() {
-  //   return ImageEntries.find({owner : Meteor.userId()}).count()
-  // }
+  ,
+  imageCount: function() {
+    return ImageEntries.find({owner : Meteor.userId()}).count()
+  }
 });
 
 Template.imageDisplay.helpers({
-  // tagNames: function(tagIdArray) {
-  //   tagNames = []
-  //   if (tagIdArray) {
-  //     for (var i = tagIdArray.length - 1; i >= 0; i--) {
-  //       currTagId = tagIdArray[i];
-  //       currTagName = Tags.findOne(currTagId);
-  //       if (currTagName) {
-  //         tagNames.push(currTagName.name);
-  //       };
-  //     };
-  //   };
-  //   return tagNames;
-  // }
+//   tagNames: function(tagIdArray) {
+//     tagNames = []
+//     if (tagIdArray) {
+//       for (var i = tagIdArray.length - 1; i >= 0; i--) {
+//         currTagId = tagIdArray[i];
+//         currTagName = Tags.findOne(currTagId);
+//         if (currTagName) {
+//           tagNames.push(currTagName.name);
+//         };
+//       };
+//     };
+//     return tagNames;
+//   }
 });
 
 Template.imageListing.helpers({
@@ -84,9 +92,10 @@ Template.imageUpload.helpers({
 Template.imageUpload.events({
   "click button[id='uploadSubmit']": function(e) {
     // console.log('button pushed!');
-    regexMatch = $('#sourceURL')[0].value.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/))
+    var urlValue = $('#sourceURL')[0] ? $('#sourceURL')[0].value : null;
+    regexMatch = urlValue ? urlValue.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/)) : null;
     // console.log(regexMatch);
-    if ($('#sourceURL')[0].value && regexMatch==null){
+    if (urlValue && regexMatch==null){
       $('#urlTrouble').removeClass('hidden');
       $('#urlTrouble').addClass('show');
       return false;
@@ -120,7 +129,7 @@ Template.imageUpload.events({
           Meteor.call('addImageEntry', 
             res.public_id, 
             // $('#sourceURL')[0].value,
-            $('#sourceURL')[0].value,
+            urlValue,
             $('#formatted_address')[0].innerHTML,
             $('#gps')[0].innerHTML,
             $('#imageComment')[0].value); //end addImageEntry call
