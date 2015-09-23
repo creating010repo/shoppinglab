@@ -24,7 +24,7 @@ Meteor.publish("allImageEntriesDB", function(){
     console.log("allImageEntriesDB "+this.userId);
     //var user is the same info as would be given in Meteor.user();
     var user = Meteor.users.findOne(this.userId);
-    if (user.username == "peter" || user.username == "test123"){
+    if (user.username == "peter" || user.username == "justien Marseille"){
       return ImageEntries.find();
     }
   }
@@ -38,7 +38,7 @@ Meteor.publish("allUsersDB", function(){
     var user = Meteor.users.findOne(this.userId);
     //console.log(user.username);
 
-    if (user.username == "peter" || user.username == "test123"){
+    if (user.username == "peter" || user.username == "justien Marseille"){
       return Meteor.users.find({});
     };
   }

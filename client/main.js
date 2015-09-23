@@ -30,7 +30,7 @@ Template.allUserListing.helpers({
     if (Meteor.userId()) {
       var user = Meteor.users.findOne(Meteor.userId());
       //console.log(user);
-      if (typeof(user) != "undefined" && (user.username == "peter" || user.username == "test123")){
+      if (typeof(user) != "undefined" && (user.username == "peter" || user.username == "justien Marseille")){
         return Meteor.users.find({});
       }
     }
@@ -99,7 +99,7 @@ Template.allImageListing.helpers({
   allImageEntries: function () {
     var user = Meteor.users.findOne(Meteor.userId());
       //console.log(user);
-      if (typeof(user) != "undefined" && (user.username == "peter" || user.username == "test123")){
+      if (typeof(user) != "undefined" && (user.username == "peter" || user.username == "justien Marseille")){
 
         return ImageEntries.find();
       }
