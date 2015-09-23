@@ -1,4 +1,9 @@
 /* CSS declarations go here */
+
+a {
+  word-wrap: break-word;
+}
+
 /*
 img {
   max-width: 100%;
