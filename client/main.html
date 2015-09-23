@@ -48,7 +48,7 @@
 		<div class="thumbnail">
 		{{#each allUsers}}
 			<ul>
-				<li>{{username}} ({{_id}})<span class="badge">{{imageCount}}</span></li>
+				<li>{{username}} <span class="badge">{{userImageCount _id}}</span></li>
 			</ul>
 		{{/each}}
 		</div>
@@ -150,6 +150,7 @@
 				<span class="glyphicon glyphicon-globe"></span><a href="{{sourceURL}}" class="small"> {{sourceURL}}</a><br/>
 				<span class="glyphicon glyphicon-map-marker"></span><span class="small"> {{formatted_address}}</span>
 				<!-- <div class="tags label label-default">{{tagNames tags}}</div> -->
+				<a href="#" name="delete" >[delete]</a>
 			</div>
 		</div>
 		{{/if}}

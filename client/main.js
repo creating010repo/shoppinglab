@@ -38,12 +38,40 @@ Template.allUserListing.helpers({
     
   }
   ,
-  imageCount: function() {
-    return ImageEntries.find({owner : Meteor.userId()}).count()
+  userImageCount: function(userId) {
+    //console.log("imagecount userid "+userId);
+    return ImageEntries.find({owner : userId}).count()
+  }
+});
+Template.imageDisplay.events({
+    "click a[name='delete']":function(e){
+    var confirmed = confirm('sure you want to delete the pic?');
+    if (confirmed){
+      // Some magic in the cloudinary
+      // var cloudinaryFolder;
+      // var removedCloudinaryFolder;
+      // if (Meteor.absoluteUrl() == "http://shoppinglab.meteor.com/") {
+      //   cloudinaryFolder = "shoppinglab-production";
+      //   removedCloudinaryFolder = "shoppinglab-deleted"
+      // } else {
+      //   cloudinaryFolder = "testing";
+      //   removedCloudinaryFolder = "testing-deleted"
+      // };
+      // console.log(this.public_id);
+
+      // var imgPublicId = this.public_id.split('/')[1];
+      // Cloudinary.v2.delete(this.public_id,function(error, result){
+      //   //callback function
+      //   console.log(result);
+      // });
+      Meteor.call("removeImageEntry", this._id, this.public_id);
+    }
+    
   }
 });
 
 Template.imageDisplay.helpers({
+
 //   tagNames: function(tagIdArray) {
 //     tagNames = []
 //     if (tagIdArray) {
