@@ -7,7 +7,7 @@ Meteor.startup(function() {
 });
 
 Meteor.subscribe("imageEntries");
-Meteor.subscribe("allImageEntries");
+Meteor.subscribe("allImageEntriesDB");
 Meteor.subscribe("allUsersDB");
 
 $.cloudinary.config({
@@ -28,9 +28,9 @@ Template.geocomplete.rendered = function () {
 Template.allUserListing.helpers({
   allUsers: function(){
     if (Meteor.userId()) {
-      console.log('afds;dfjsdkjflksjdfn ');
       var user = Meteor.users.findOne(Meteor.userId());
-      if (user.username == "peter" || user.username == "test123"){
+      //console.log(user);
+      if (typeof(user) != "undefined" && (user.username == "peter" || user.username == "test123")){
         return Meteor.users.find({});
       }
     }
@@ -69,7 +69,12 @@ Template.imageListing.helpers({
 
 Template.allImageListing.helpers({
   allImageEntries: function () {
-    return ImageEntries.find();
+    var user = Meteor.users.findOne(Meteor.userId());
+      //console.log(user);
+      if (typeof(user) != "undefined" && (user.username == "peter" || user.username == "test123")){
+
+        return ImageEntries.find();
+      }
   }
 });
 
