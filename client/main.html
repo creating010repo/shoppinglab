@@ -46,6 +46,7 @@
 <template name="allUserListing">
 	<div class="col-md-4 col-xs-4">
 		<div class="thumbnail">
+		<p>Sum images <span class="badge">{{sumImageCount}}</span></p>
 		{{#each allUsers}}
 			<ul>
 				<li>{{username}} <span class="badge">{{userImageCount _id}}</span></li>

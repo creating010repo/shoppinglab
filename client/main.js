@@ -41,6 +41,9 @@ Template.allUserListing.helpers({
   userImageCount: function(userId) {
     //console.log("imagecount userid "+userId);
     return ImageEntries.find({owner : userId}).count()
+  },
+  sumImageCount: function() {
+    return ImageEntries.find({}).count()
   }
 });
 Template.imageDisplay.events({
@@ -109,6 +112,9 @@ Template.allImageListing.helpers({
 Template.imageCounter.helpers({
   imageCount: function() {
     return ImageEntries.find({owner : Meteor.userId()}).count()
+  },
+  imageCountSum: function() {
+    return ImageEntries.find({}).count()
   }
 });
 
