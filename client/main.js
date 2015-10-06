@@ -41,26 +41,27 @@ Template.mapView.helpers({
 Template.mapView.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('shoppingLabMarkers', function(map) {
-    //var markers = ImageEntries.find().fetch;
 
+    // console.log("google maps ready");
+    // console.log(ImageEntries.find().count());
     ImageEntries.find().forEach(
       function (thisDoc){
-        var thisGps = thisDoc.gps.split(',');
-        var latlon = new google.maps.LatLng(thisGps[0],thisGps[1]);
-        // console.log(latlon);
-        var marker = new google.maps.Marker({
-          position: latlon,
-          map: map.instance,
-          id: thisDoc._id
-        });
-        // console.log(marker)
+        console.log("in forEach: "+thisDoc._id);
+        if (thisDoc.gps){
+          var thisGps = thisDoc.gps.split(',');
+          var latlon = new google.maps.LatLng(thisGps[0],thisGps[1]);
+          // console.log(thisGps[0] + " , " + thisGps[1]);
+          var marker = new google.maps.Marker({
+            position: latlon,
+            map: map.instance,
+            id: thisDoc._id
+          });
+        } 
+        // else {
+        //   console.log("GPS error " + thisDoc._id);
+        // }
       }
     );
-    // Add a marker to the map once it's ready
-    // var marker = new google.maps.Marker({
-    //   position: map.options.center,
-    //   map: map.instance
-    // });
   });
 });
 

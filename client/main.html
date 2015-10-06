@@ -180,3 +180,15 @@
     {{> googleMap name="shoppingLabMarkers" options=shoppingLabMapOptions}}
   </div>
 </template>
+
+<template name="Loading">
+	{{> header}}
+	{{#if currentUser}}
+	<div class="container">
+		<div class="row">
+			<!-- <p> Loading... </p> -->
+				{{> spinner}}
+		</div>
+	</div>
+	{{/if}}
+</template>
