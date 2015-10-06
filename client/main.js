@@ -25,6 +25,45 @@ Template.geocomplete.rendered = function () {
   });
 }
 
+Template.mapView.helpers({
+  shoppingLabMapOptions: function() {
+    // Make sure the maps API has loaded
+    if (GoogleMaps.loaded()) {
+      // Map initialization options
+      return {
+        center: new google.maps.LatLng(51.917937,4.487838),
+        zoom: 8
+      };
+    }
+  }
+});
+
+Template.mapView.onCreated(function() {
+  // We can use the `ready` callback to interact with the map API once the map is ready.
+  GoogleMaps.ready('shoppingLabMarkers', function(map) {
+    //var markers = ImageEntries.find().fetch;
+
+    ImageEntries.find().forEach(
+      function (thisDoc){
+        var thisGps = thisDoc.gps.split(',');
+        var latlon = new google.maps.LatLng(thisGps[0],thisGps[1]);
+        // console.log(latlon);
+        var marker = new google.maps.Marker({
+          position: latlon,
+          map: map.instance,
+          id: thisDoc._id
+        });
+        // console.log(marker)
+      }
+    );
+    // Add a marker to the map once it's ready
+    // var marker = new google.maps.Marker({
+    //   position: map.options.center,
+    //   map: map.instance
+    // });
+  });
+});
+
 Template.allUserListing.helpers({
   allUsers: function(){
     if (Meteor.userId()) {
