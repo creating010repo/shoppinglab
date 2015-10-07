@@ -5,18 +5,6 @@
 <body>
 </body>
 
-<template name="userLoggedIn">
-	{{> header}}
-	{{#if currentUser}}  
-	<div class="container">  
-		<div class="row">
-			{{> imageUpload}}
-			{{> imageListing}}
-		</div>		  	
-	</div>
-	{{/if}}	
-</template>
-
 <template name="header">
   <div class="container">
 		<div class="header clearfix">
@@ -37,93 +25,8 @@
   </div>
 </template>	
 
-
-<template name="imageUpload">
-	<div class="thumbnail col-md-4 col-xs-4">
-		<form id="uploadForm" onsubmit="return false;" method="post">
-				<div class="form-group">
-					<label for="uploadFile">Image upload</label><span class="text-warning"> *</span>
-					<input type="file" accept="image" id="uploadFile" required/>
-				</div>
-				<div class="form-group">
-				<label for="place">Location</label><span class="text-warning"> *</span>
-				  {{> geocomplete}}
-			  </div>
-				<div class="form-group">
-					<label for="sourceURL">Internet source</label>
-					<span id="urlTrouble" class="hidden">Did you put http:// in front?</span>
-					<input type="text" class="form-control" name="source" id="sourceURL" placeholder="http://"/>
-				</div>
-				<div class="form-group">
-					<label for="sourceURL">Note</label>
-					<textarea class="form-control" rows="3" id="imageComment"></textarea>
-				</div>
-
-
-<!-- 				<div class="form-group">
-					<label for="tag1">Tag1</label>
-					<input type="text" name="tag1" id="tag1" placeholder="Tag 1"/>
-				</div>	
-				<div class="form-group">
-					<label for="tag2">Tag2</label>
-					<input type="text" name="tag2" id="tag2" placeholder="Tag 2"/>
-				</div>	
-				<div class="form-group">
-					<label for="tag3">Tag3</label>
-					<input type="text" name="tag3" id="tag3" placeholder="Tag 3"/>
-				</div> -->
-				<button class="btn btn-default" id="uploadSubmit">
-					Upload <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
-				</button>	
-
-		</form>
-		{{#if waitingSpinner}}
-			{{> spinner}}
-		{{/if}}
-
-		{{#if imageId}}
-			<div id='imageUploadContainer'>
-				Upload successful!<br/>
-				<img class="img-responsive" src="{{c.url imageId format=format}}">
-			</div>
-		{{/if}}
-	</div>
-</template>
-
-<template name="imageListing">
-	  {{#each imageEntries}}
-	    {{> imageDisplay}}
-
-	  {{/each}}
-</template>
-
-<template name="imageDisplay">
-	<div class="col-md-4 col-xs-4">
-		{{#if public_id}}
-		<div class="thumbnail">	
-			<div class="imageListElement">
-					<a href="{{c.url public_id}}" target="_blank"><img class="img-responsive" src="{{c.url public_id width=484 height=400 crop="fill"}}"></a>
-					<span class="deleteButton pull-right small"><a href="#" name="delete" >[delete]</a></span><br/>
-			</div>
-			<div class="caption">
-				<p>{{comment}}</p>
-				<span class="glyphicon glyphicon-globe"></span><a href="{{sourceURL}}" class="small"> {{sourceURL}}</a><br/>
-				<span class="glyphicon glyphicon-map-marker"></span><span class="small"> {{formatted_address}}</span>
-				<!-- <div class="tags label label-default">{{tagNames tags}}</div> -->
-			</div>
-		</div>
-		{{/if}}
-	</div>	
-</template>
-
 <template name="imageCounter">
 	<span class="badge">{{imageCount}}</span>
-
-</template>
-<template name="geocomplete">
-  <input id="place" class="form-control" type="text" name="place" placeholder="Type the location..." required>
-  <span class="help-block small" name="formatted_address" id="formatted_address"></span>
-  <span class="help-block small hidden" name="location" id="gps"></span>
 </template>
 
 <template name="Loading">
