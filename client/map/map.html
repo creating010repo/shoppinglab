@@ -1,0 +1,14 @@
+<template name="mapPage">
+	{{> header}}
+	<div class="container">
+		<div class="row">
+			{{> mapView}}
+		</div>
+	</div>
+</template>
+
+<template name="mapView">
+	<div class="map-container">
+    {{> googleMap name="shoppingLabMarkers" options=shoppingLabMapOptions}}
+  </div>
+</template>
