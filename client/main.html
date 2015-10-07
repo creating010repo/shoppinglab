@@ -19,16 +19,20 @@
 
 <template name="header">
   <div class="container">
-		<div class="navbar-header">
-		  <h1>ShoppingLab - Signals upload</h1>
-		  <ul class="nav navbar-nav">
-		  	<li class="dropdown">
+		<div class="header clearfix">
+			<nav>
+			  <ul class="nav nav-pills pull-right">
+			  	{{#if currentUser}}
+				  	<li><a href="/">My uploads {{> imageCounter}}</a></li>
+				  	<li><a href="/dashboard">Dashboard</a></li>
+				  	<li><a href="/map">Map</a></li>
+				  {{/if}}
 				  {{> loginButtons}}
-			  </li>
-		  </ul>
-		  {{#if currentUser}}
-		  	<span class="label">{{> imageCounter}}</span>
-		  {{/if}}
+			  	<!-- <li class="dropdown">
+				  </li> -->
+			  </ul>
+			</nav>
+		  <h3 class="text-muted">ShoppingLab</h3>
 	  </div>
   </div>
 </template>	
@@ -164,4 +168,31 @@
   <input id="place" class="form-control" type="text" name="place" placeholder="Type the location..." required>
   <span class="help-block small" name="formatted_address" id="formatted_address"></span>
   <span class="help-block small hidden" name="location" id="gps"></span>
+</template>
+
+<template name="mapPage">
+	{{> header}}
+	<div class="container">
+		<div class="row">
+			{{> mapView}}
+		</div>
+	</div>
+</template>
+
+<template name="mapView">
+	<div class="map-container">
+    {{> googleMap name="shoppingLabMarkers" options=shoppingLabMapOptions}}
+  </div>
+</template>
+
+<template name="Loading">
+	{{> header}}
+	{{#if currentUser}}
+	<div class="container">
+		<div class="row">
+			<!-- <p> Loading... </p> -->
+				{{> spinner}}
+		</div>
+	</div>
+	{{/if}}
 </template>

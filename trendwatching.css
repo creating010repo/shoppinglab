@@ -1,5 +1,16 @@
 /* CSS declarations go here */
 
+.dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+.map-container {
+  width: max-width;
+  max-width: 100%;
+  height: 500px;
+}
+
 a {
   word-wrap: break-word;
 }
