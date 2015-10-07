@@ -37,50 +37,6 @@
   </div>
 </template>	
 
-<template name="overviewDashboard">	
-	{{> header}}
-	<div class="container">
-		<div class="row">
-			{{> allUserListing}}
-			{{> allImageListing}}
-		</div>
-	</div>
-</template>
-
-<template name="allUserListing">
-	<div class="col-md-4 col-xs-4">
-		<div class="thumbnail">
-		<p>Sum images <span class="badge">{{sumImageCount}}</span></p>
-		{{#each allUsers}}
-			<ul>
-				<li>{{username}} <span class="badge">{{userImageCount _id}}</span></li>
-			</ul>
-		{{/each}}
-		</div>
-	</div>
-</template>
-
-<template name="allImageListing">
-	{{#each allImageEntries}}
-  	<div class="col-md-4 col-xs-4">
-		<!-- {{#if currentUser}} -->
-		<div class="thumbnail">	
-			<div class="imageListElement"> 
-				<a href="{{c.url public_id}}" target="_blank"><img class="img-responsive" src="{{c.url public_id width=484 height=400 crop="fill"}}"></a>
-			</div>
-			<div class="caption">
-				<p>{{comment}}</p>
-				<span class="glyphicon glyphicon-user"></span><span class="small"> {{username}}</span><br/>
-				<span class="glyphicon glyphicon-globe"></span><a href="{{sourceURL}}" class="small"> {{sourceURL}}</a><br/>
-				<span class="glyphicon glyphicon-map-marker"></span><span class="small"> {{formatted_address}}</span>
-				<!-- <div class="tags label label-default">{{tagNames tags}}</div> -->
-			</div>
-		</div>
-		<!-- {{/if}} -->
-		</div>
-  {{/each}}
-</template>
-
 
 <template name="imageUpload">
 	<div class="thumbnail col-md-4 col-xs-4">
