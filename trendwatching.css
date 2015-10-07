@@ -1,5 +1,10 @@
 /* CSS declarations go here */
 
+.dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
 .map-container {
   width: max-width;
   max-width: 100%;
