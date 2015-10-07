@@ -32,7 +32,7 @@ Template.mapView.helpers({
       // Map initialization options
       return {
         center: new google.maps.LatLng(51.917937,4.487838),
-        zoom: 8
+        zoom: 7
       };
     }
   }
@@ -46,7 +46,7 @@ Template.mapView.onCreated(function() {
     // console.log(ImageEntries.find().count());
     ImageEntries.find().forEach(
       function (thisDoc){
-        console.log("in forEach: "+thisDoc._id);
+        // console.log("in forEach: "+thisDoc._id);
         if (thisDoc.gps){
           var thisGps = thisDoc.gps.split(',');
           var latlon = new google.maps.LatLng(thisGps[0],thisGps[1]);
