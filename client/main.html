@@ -170,21 +170,6 @@
   <span class="help-block small hidden" name="location" id="gps"></span>
 </template>
 
-<template name="mapPage">
-	{{> header}}
-	<div class="container">
-		<div class="row">
-			{{> mapView}}
-		</div>
-	</div>
-</template>
-
-<template name="mapView">
-	<div class="map-container">
-    {{> googleMap name="shoppingLabMarkers" options=shoppingLabMapOptions}}
-  </div>
-</template>
-
 <template name="Loading">
 	{{> header}}
 	{{#if currentUser}}
