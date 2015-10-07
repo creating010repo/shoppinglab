@@ -1,14 +1,23 @@
+// ### WORKING VALIDATION FOR PETER AND JUSTIEN ACCOUNTS
+// Template.allUserListing.helpers({
+//   allUsers: function(){
+//     if (Meteor.userId()) {
+//       var user = Meteor.users.findOne(Meteor.userId());
+//       //console.log(user);
+//       if (typeof(user) != "undefined" && (user.username == "peter" || user.username == "justien Marseille")){
+//         return Meteor.users.find({});
+//       }
+//     }
+//     return null;
+//   }
+
 Template.allUserListing.helpers({
   allUsers: function(){
     if (Meteor.userId()) {
-      var user = Meteor.users.findOne(Meteor.userId());
       //console.log(user);
-      if (typeof(user) != "undefined" && (user.username == "peter" || user.username == "justien Marseille")){
-        return Meteor.users.find({});
-      }
+      return Meteor.users.find({});
     }
-    return null;
-    
+    return null;    
   }
   ,
   userImageCount: function(userId) {
@@ -23,11 +32,19 @@ Template.allUserListing.helpers({
 
 Template.allImageListing.helpers({
   allImageEntries: function () {
-    var user = Meteor.users.findOne(Meteor.userId());
-      //console.log(user);
-      if (typeof(user) != "undefined" && (user.username == "peter" || user.username == "justien Marseille")){
-
-        return ImageEntries.find();
-      }
+    //console.log(user);
+    return ImageEntries.find();
   }
 });
+
+// ### WORKING VALIDATION FOR PETER AND JUSTIEN ACCOUNTS
+// Template.allImageListing.helpers({
+//   allImageEntries: function () {
+//     var user = Meteor.users.findOne(Meteor.userId());
+//       //console.log(user);
+//       if (typeof(user) != "undefined" && (user.username == "peter" || user.username == "justien Marseille")){
+
+//         return ImageEntries.find();
+//       }
+//   }
+// });
