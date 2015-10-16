@@ -33,12 +33,38 @@ Template.mapView.onCreated(function() {
             scaledSize: new google.maps.Size(21, 32),
             size: new google.maps.Size(42, 64),
             url: 'retailinnovatie-marker.svg',
-          };          
+          };
+
+          // var contentInfoWindow = Blaze.toHTMLWithData(Template.mapInfoWindow, Blaze.getData(thisDoc));
+          var contentInfoWindow = Blaze.toHTMLWithData(Template.mapInfoWindow, thisDoc);
+          
+          var infowindow = new google.maps.InfoWindow({
+
+              // content: '<div class="thumbnail"> <p>'+ thisDoc.public_id + '</p></div>'
+              // content: Blaze.toHTML(Template.imageDisplay, Blaze.getData(thisDoc))
+              content: contentInfoWindow,
+              maxWidth: 250
+            });
+
           var marker = new google.maps.Marker({
             position: latlon,
             icon: pinIcon,
             map: map.instance,
             id: thisDoc._id
+          });
+
+          google.maps.event.addListener(marker, 'click', function(){
+            if(!marker.open){
+              infowindow.open(map.instance, marker);
+              marker.open = true;
+            } else {
+              infowindow.close(map.instance, marker);
+              marker.open = false;
+            }
+            google.maps.event.addListener(map.instance, 'click', function() {
+              infowindow.close();
+              marker.open = false;
+            });
           });
         } 
         // else {

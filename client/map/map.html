@@ -12,3 +12,17 @@
     {{> googleMap name="shoppingLabMarkers" options=shoppingLabMapOptions}}
   </div>
 </template>
+
+<template name="mapInfoWindow">
+	<div>
+		<div class="imageListElement">
+			<a href="{{c.url public_id}}" target="_blank"><img class="img-responsive" src="{{c.url public_id width=242 height=200 crop="fill"}}"></a>
+		</div>
+		<div class="caption">
+			<p>{{comment}}</p>
+			<span class="glyphicon glyphicon-globe"></span><a href="{{sourceURL}}" class="small"> {{sourceURL}}</a><br/>
+			<span class="glyphicon glyphicon-map-marker"></span><span class="small"> {{formatted_address}}</span>
+			<!-- <div class="tags label label-default">{{tagNames tags}}</div> -->
+		</div>
+	</div>
+</template>
