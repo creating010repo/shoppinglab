@@ -1,4 +1,3 @@
-
 Meteor.startup(function() {
   GoogleMaps.load({
     key: Meteor.settings.public.googleMapsApiKey,
@@ -9,6 +8,7 @@ Meteor.startup(function() {
 Meteor.subscribe("imageEntries");
 Meteor.subscribe("allImageEntriesDB");
 Meteor.subscribe("allUsersDB");
+Meteor.subscribe("allTags");
 
 $.cloudinary.config({
   cloud_name: Meteor.settings.public.cloudinaryCloud

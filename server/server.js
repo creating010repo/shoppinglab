@@ -43,6 +43,12 @@ Meteor.publish("allUsersDB", function(){
   return null;
 });
 
+Meteor.publish("allTags", function(){
+  if (this.userId) {
+    return Tags.find({});
+  }
+  return null;
+});
 
 // ### WORKING VALIDATION FOR PETER AND JUSTIEN ACCOUNTS
 
