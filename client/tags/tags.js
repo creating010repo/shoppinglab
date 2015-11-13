@@ -1,16 +1,3 @@
-// var tagArray = [
-//     "fashion",
-//     "social",
-//     "urbanlife",
-//     "experience",
-//     "sustainability",
-//     "learning",
-//     "technology",
-//     "finance",
-//     "innovation",
-//     "business"         
-// ]
-
 Template.tagAdministration.helpers({
     allTags: function () {
       return Tags.find({});
@@ -47,6 +34,22 @@ function tagCheck(imgEntryTags, tagToCheckId){
 //   };
 // };
 
+Template.taggingAreaDashboard.helpers({
+  allTags: function() {
+    if (this.tags){
+      var imageTags = this.tags;
+      console.log("imageTags", imageTags);
+
+      var imageTagList = Tags.find(
+          {_id : { $in: this.tags}}
+        ).map( function(u) { return u.tagName; } );
+      console.log("imageTagList ", imageTagList);
+      return imageTagList;
+    }
+  },
+
+});
+
 Template.taggingArea.helpers({
   allTags: function() {
     return Tags.find({});
@@ -72,7 +75,7 @@ Template.taggingArea.helpers({
     if (tagCheck(parent_data.tags, this._id) == true){
       return "";
     } 
-    if (parent_data.tags.length > 1){
+    if (parent_data.tags.length > 2){
       return "disabled";
     }
     return "";

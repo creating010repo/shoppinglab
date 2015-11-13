@@ -2,11 +2,22 @@
 <template name="taggingArea">
   <div class="tags">
     {{#each allTags}}
-    	<button type="button" class="btn btn-xs btn-default tagButton {{isTagged}}" {{isDisabled}} >{{tagName}} </button>
+      <button type="button" class="btn btn-xs btn-default tagButton {{isTagged}}" {{isDisabled}} >{{tagName}} </button>
     {{/each}}  
   </div>
 </template>
 
+
+<!-- ON /DASHBOARD page -->
+<template name="taggingAreaDashboard">
+  <div class="tags">
+    {{#each allTags}}
+      <span class="label label-success">
+        {{this}}
+      </span>&nbsp;
+    {{/each}}
+  </div>
+</template>
 
 <!-- ON /TAG page -->
 <template name="tagAdministration">
