@@ -1,4 +1,6 @@
 settings.json
 trendwatching.sublime-project
 trendwatching.sublime-workspace
+mup.json
 .jshintrc
+*.tar.gz
