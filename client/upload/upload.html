@@ -79,7 +79,14 @@
 			</div>
       {{> taggingArea}}
 			<div class="caption">
-				<p>{{comment}}</p>
+				<div class="editable-text-trigger">
+					{{> editableText collection="imageEntries" field="comment" textarea=true beforeUpdate="showNewCommentValue" onStopEditing="showHideSave" inputClass="tag-edit" substitute="[Without a note, click to edit]"}}
+				</div>
+				<div id="savedComment_{{this._id}}" class="hidden pull-right text-success">
+					<small>
+						<span class="glyphicon glyphicon-ok"></span> Saved!
+					</small>
+				</div><br/>
 				<span class="glyphicon glyphicon-globe"></span><a href="{{sourceURL}}" class="small"> {{sourceURL}}</a><br/>
 				<span class="glyphicon glyphicon-map-marker"></span><span class="small"> {{formatted_address}}</span>
 				<!-- <div class="tags label label-default">{{tagNames tags}}</div> -->

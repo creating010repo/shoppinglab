@@ -1,5 +1,20 @@
 /* CSS declarations go here */
 
+.editable-text {
+  cursor: text;
+}
+
+.editable-text:hover{
+  background-color: lightyellow;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.tag-edit {
+  height: 10em;
+}
 .dropdown-menu {
   right: 0;
   left: auto;

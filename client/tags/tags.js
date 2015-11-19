@@ -6,6 +6,7 @@ Template.tagAdministration.helpers({
 
 function tagCheck(imgEntryTags, tagToCheckId){
   // console.log(this);
+  if (!imgEntryTags) return false;
   for (var i = 0; i < imgEntryTags.length; i++) {
     //console.log("imgEntryTags[i]: ", imgEntryTags[i]);
     tmp = imgEntryTags[i]._str;
@@ -75,6 +76,7 @@ Template.taggingArea.helpers({
     if (tagCheck(parent_data.tags, this._id) == true){
       return "";
     } 
+    if (!parent_data.tags) return "";
     if (parent_data.tags.length > 2){
       return "disabled";
     }

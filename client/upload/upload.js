@@ -41,8 +41,6 @@ Template.imageUpload.events({
 
           Session.set('imageId', res.public_id);
 
-           
-
           // let's put the file into the database
           Meteor.call('addImageEntry', 
             res.public_id, 
@@ -66,9 +64,7 @@ Template.imageUpload.events({
           Session.set('waitingSpinner', false);
           $('#uploadSubmit').attr('disabled', false);
         });
-
     };
-
   }
 });
 
@@ -106,23 +102,6 @@ Template.imageDisplay.events({
     }
     
   }
-});
-
-Template.imageDisplay.helpers({
-
-//   tagNames: function(tagIdArray) {
-//     tagNames = []
-//     if (tagIdArray) {
-//       for (var i = tagIdArray.length - 1; i >= 0; i--) {
-//         currTagId = tagIdArray[i];
-//         currTagName = Tags.findOne(currTagId);
-//         if (currTagName) {
-//           tagNames.push(currTagName.name);
-//         };
-//       };
-//     };
-//     return tagNames;
-//   }
 });
 
 Template.geocomplete.rendered = function () {
