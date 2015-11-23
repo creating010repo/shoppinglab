@@ -3,10 +3,24 @@
 	<div class="container">
 		<div class="row">
 			{{> allUserListing}}
+			{{> tagFiltering}}
 			{{> allImageListing}}
 		</div>
 	</div>
 </template>
+
+
+<template name="tagFiltering">
+	<div class="col-md-8 col-xs-8">
+		<div class="well well-sm">
+			<h3>Filter by tags</h3>
+			{{#each allTags}}
+				<button type="button" class="tagFilterButton btn btn-sm {{isTagged}}"> {{tagName}}</button>
+			{{/each}}
+		</div>
+	</div>
+</template>
+
 
 <template name="allUserListing">
 	<div class="col-md-4 col-xs-4">
@@ -22,7 +36,7 @@
 </template>
 
 <template name="allImageListing">
-	{{#each allImageEntries}}
+	{{#each filteredListImages}}
   	<div class="col-md-4 col-xs-4">
 		<!-- {{#if currentUser}} -->
 		<div class="thumbnail">	

@@ -1,5 +1,13 @@
 /* CSS declarations go here */
 
+.tagFilterButton {
+  margin-bottom: 5px;
+}
+
+.tagButton {
+  margin-bottom: 5px;
+}
+
 .editable-text {
   cursor: text;
 }

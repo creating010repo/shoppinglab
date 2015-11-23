@@ -39,12 +39,12 @@ Template.taggingAreaDashboard.helpers({
   allTags: function() {
     if (this.tags){
       var imageTags = this.tags;
-      console.log("imageTags", imageTags);
+      // console.log("imageTags", imageTags);
 
       var imageTagList = Tags.find(
           {_id : { $in: this.tags}}
         ).map( function(u) { return u.tagName; } );
-      console.log("imageTagList ", imageTagList);
+      // console.log("imageTagList ", imageTagList);
       return imageTagList;
     }
   },
@@ -65,11 +65,6 @@ Template.taggingArea.helpers({
         return "btn-success";
       };
     }
-    // if (tagCheck()) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
   },
   isDisabled: function(){
     var parent_data = Template.parentData(1);
