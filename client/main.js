@@ -1,7 +1,7 @@
 Meteor.startup(function() {
   GoogleMaps.load({
     key: Meteor.settings.public.googleMapsApiKey,
-    libraries: 'places'  // also accepts an array if you need more than one
+    libraries: ['places','visualization']  // also accepts an array if you need more than one
   });
 });
 

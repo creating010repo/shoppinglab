@@ -2,6 +2,7 @@
 	{{> header}}
 	<div class="container">
 		<div class="row">
+      {{> filtersMap}}
 			{{> mapView}}
 		</div>
 	</div>
@@ -13,12 +14,23 @@
   </div>
 </template>
 
+<template name="filtersMap">
+  <div class="well well-sm">
+    {{#each allTags}}
+      <button type="button" class="tagFilterButton btn btn-sm {{isTagged}}"> {{tagName}}</button>
+    {{/each}}<br/>
+    <small>Signals without tags are shown when no trends are selected.</small><br/>
+    <small><a href="#" class="selectAll">Select all</a> / <a href="#" class="selectNone">Select none</a></small>
+  </div>
+</template>
+
 <template name="mapInfoWindow">
 	<div>
 		<div class="imageListElement">
 			<a href="{{c.url public_id}}" target="_blank"><img class="img-responsive" src="{{c.url public_id width=242 height=200 crop="fill"}}"></a>
 		</div>
 		<div class="caption">
+      {{> taggingAreaDashboard}}
 			<p>{{comment}}</p>
 			<span class="glyphicon glyphicon-globe"></span><a href="{{sourceURL}}" class="small"> {{sourceURL}}</a><br/>
 			<span class="glyphicon glyphicon-map-marker"></span><span class="small"> {{formatted_address}}</span>
