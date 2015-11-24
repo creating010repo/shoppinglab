@@ -34,7 +34,7 @@ Session.set("tagFilterArray", []);
 // tagFilterArrayDep = new Tracker.Dependency;
 
 
-
+// pushing tags into the filter array
 var setTagFilters = function (tag) {
   var tagFilterArray = Session.get("tagFilterArray");
   var newTagFilterArray = [];
@@ -48,7 +48,7 @@ var setTagFilters = function (tag) {
     else {
       alreadyIncluded = true;
     }
-  };
+  }
   //Current item that was clicked only added if was not there before
   // console.log(tagFilterArray, tag);
   if(tagFilterArray.length == 0 || !alreadyIncluded){
@@ -66,9 +66,11 @@ Template.tagFiltering.tagFilters = function () {
   return Session.get("tagFilterArray");
 };
 Template.tagFiltering.helpers({
+  // listing all tags in the database
   allTags: function(){
     return Tags.find();
   },
+  // indicating if a tag is added to the array or not (to show btn-success status for button)
   isTagged: function(){
     var tagFilterArray = Session.get("tagFilterArray");
 
@@ -78,12 +80,13 @@ Template.tagFiltering.helpers({
       if (currTag._str == this._id._str) {
         return "btn-success";
       }
-    };      
+    }
     return "";
   }
-})
+});
 
 Template.tagFiltering.events({
+  // listening to the button click of the tag buttons
   "click .tagFilterButton": function(e){
     // console.log("add tag to selected",this._id);
     setTagFilters(this._id);
@@ -91,23 +94,22 @@ Template.tagFiltering.events({
 });
 
 Template.allImageListing.helpers({
+  // listing all images in the database
   allImageEntries: function () {
-    // console.log(user);
     return ImageEntries.find();
-  }, 
+  },
+  // listing the filtered list of images from the database
   filteredListImages: function () {
     var tagFilterArray = Session.get("tagFilterArray");
     // console.log("IMAGESLIST search by tag ", tagFilterArray);
     if(tagFilterArray.length == 0){
-      return ImageEntries.find();
+      return ImageEntries.find( { $or: [ {"tags": {$size : 0}}, {"tags": {$exists: 0}}]});
     }
     else{
       return ImageEntries.find({
         tags: {$in: tagFilterArray}
       });      
     }
-
-    //.map( function(u) { console.log(u); return u.sourceURL; } );
   }
 });
 

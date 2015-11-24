@@ -13,10 +13,11 @@
 <template name="tagFiltering">
 	<div class="col-md-8 col-xs-8">
 		<div class="well well-sm">
-			<h3>Filter by tags</h3>
+			<h5>Filter by signals</h5>
 			{{#each allTags}}
 				<button type="button" class="tagFilterButton btn btn-sm {{isTagged}}"> {{tagName}}</button>
-			{{/each}}
+			{{/each}}<br/>
+      <small>Click on the trends to show the tagged signals. By default (when no trends are selected), you can see the signals without any trends.</small>
 		</div>
 	</div>
 </template>
