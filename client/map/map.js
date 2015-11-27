@@ -188,6 +188,10 @@ function heatmapDisplay(map) {
   )
   heatmap = new google.maps.visualization.HeatmapLayer({
     data: heatmapPoints,
+    // dissipating: false,
+    // maxIntensity: 1,
+    opacity: 0.95,
+    radius: 20,
     map: map.instance
   });
 }
