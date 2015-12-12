@@ -1,0 +1,53 @@
+<template name="userPage">
+  {{> header}}
+  {{> usersList}}
+</template>
+
+<template name="usersList">
+  <div class="container">
+    <!-- <p>Sum images <span class="badge">{{sumImageCount}}</span></p> -->
+    <table class="table table-condensed table-striped">
+      <caption>List of users</caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Username</th>
+          <th>Fashion</th>
+          <th>Technology</th>
+          <th>Culture</th>
+          <th>Politics</th>
+          <th>Economics</th>
+          <th>BSR color</th>
+          <th>NfC</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each allUsers}}
+          <tr>
+            <th scope="row">{{@index}}</th>
+            <td><input type="text" class="form-control input-sm" id="usernameInput-{{_id}}" placeholder="{{username}}" value={{username}} disabled></td>
+            <td><input type="number" class="form-control input-sm" id="fashionInput-{{_id}}" placeholder="{{profile.fashion}}" min="1" max="5" size="1" value={{profile.fashion}}></td>
+            <td><input type="number" class="form-control input-sm" id="techInput-{{_id}}" placeholder="{{profile.technology}}" min="1" max="5" size="1" value={{profile.technology}}></td>
+            <td><input type="number" class="form-control input-sm" id="cultureInput-{{_id}}" placeholder="{{profile.culture}}" min="1" max="5" size="1" value={{profile.culture}}></td>
+            <td><input type="number" class="form-control input-sm" id="politicsInput-{{_id}}" placeholder="{{profile.politics}}" min="1" max="5" size="1" value={{profile.politics}}></td>
+            <td><input type="number" class="form-control input-sm" id="economyInput-{{_id}}" placeholder="{{profile.economy}}" min="1" max="5" size="1" value={{profile.economy}}></td>
+            <td>
+              <select class="form-control input-sm" id="bsr-{{_id}}">
+                  <option value="{{profile.bsr}}">{{profile.bsr}}</option>
+                  <option value="yellow">yellow</option>
+                  <option value="red">red</option>
+                  <option value="blue">blue</option>
+                  <option value="green">green</option>
+                </select>
+            </td>
+            <td>
+              <input type="number" class="form-control input-sm" id="nfc-{{_id}}" placeholder="{{profile.nfc}}" min="18" max="90" size="4" value={{profile.nfc}}>
+            </td>
+            <td><input class="btn btn-default updatebutton" type="submit" value="update"></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

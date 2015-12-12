@@ -38,7 +38,10 @@ Meteor.publish("allUsersDB", function(){
     //console.log(user.username);
 
       // return Meteor.users.find({});
-      return Meteor.users.find({}, {fields: {'username': 1}});
+      return Meteor.users.find({}, {fields:
+        {'username': 1,
+         'profile' : 1
+        }});
   }
   return null;
 });
