@@ -24,7 +24,7 @@ Template.imageUpload.events({
       Session.set('waitingSpinner', true);
 
       var cloudinaryFolder;
-      if (Meteor.absoluteUrl() == "http://shoppinglab.meteor.com/") {
+      if (Meteor.absoluteUrl() == "https://shoppinglab.hr.nl/") {
         cloudinaryFolder = "shoppinglab-production";
       } else {
         cloudinaryFolder = "testing";
