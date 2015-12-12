@@ -15,7 +15,7 @@ Template.allUserListing.helpers({
   allUsers: function(){
     if (Meteor.userId()) {
       //console.log(user);
-      return Meteor.users.find({});
+      return Meteor.users.find({}, {sort: {date_created: -1}});
     }
     return null;    
   }

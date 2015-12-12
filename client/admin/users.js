@@ -1,7 +1,10 @@
 Template.usersList.helpers({
   allUsers: function() {
     return Meteor.users.find({});
-  }
+  },
+  userImageCount: function(userId) {
+    return ImageEntries.find({owner : userId}).count()
+  },
 });
 
 Template.usersList.events({
