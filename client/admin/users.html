@@ -12,6 +12,7 @@
         <tr>
           <th>#</th>
           <th>Username</th>
+          <th>Email</th>
           <th>Uploads</th>
           <th>Fashion</th>
           <th>Technology</th>
@@ -28,6 +29,7 @@
           <tr>
             <th scope="row">{{@index}}</th>
             <td><input type="text" class="form-control input-sm" id="usernameInput-{{_id}}" placeholder="{{username}}" value={{username}} disabled></td>
+            <td><input type="text" class="form-control input-sm" id="emailInput-{{_id}}" placeholder="{{emails.[0].address}}" value={{emails.[0].address}}></td>
             <td><span class="badge">{{userImageCount _id}}</span></td>
             <td><input type="number" class="form-control input-sm" id="fashionInput-{{_id}}" placeholder="{{profile.fashion}}" min="1" max="5" size="1" value={{profile.fashion}}></td>
             <td><input type="number" class="form-control input-sm" id="techInput-{{_id}}" placeholder="{{profile.technology}}" min="1" max="5" size="1" value={{profile.technology}}></td>

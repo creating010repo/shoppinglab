@@ -12,7 +12,7 @@ Template.usersList.events({
     // var fashInput = $('#fashionInput-'+this._id)[0].value;
     // console.log(fashInput);
     console.log("this._id", this._id,
-                "fashionVal", $('#usernameInput-'+this._id)[0].value,
+                "usernameinput", $('#usernameInput-'+this._id)[0].value,
                 "fashionVal", $('#fashionInput-'+this._id)[0].value,
                 "techVal", $('#techInput-'+this._id)[0].value,
                 "cultureVal", $('#cultureInput-'+this._id)[0].value,
@@ -24,6 +24,7 @@ Template.usersList.events({
     Meteor.call('updateUser', 
                 this._id,
                 $('#usernameInput-'+this._id)[0].value,
+                $('#emailInput-'+this._id)[0].value,
                 $('#fashionInput-'+this._id)[0].value,
                 $('#techInput-'+this._id)[0].value,
                 $('#cultureInput-'+this._id)[0].value,
