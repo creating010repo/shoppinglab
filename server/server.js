@@ -1,5 +1,9 @@
 Meteor.startup(function () {
     // code to run on server at startup
+    process.env['MAIL_URL'] = "smtp://postmaster@sandboxac29acbbcfd44ca0ab0e21a9829c3c44.mailgun.org:7875165a4fe13f46ac69dd68850c7fd2@smtp.mailgun.org:587";
+    process.env['MAILGUN_API_KEY'] = "MailgunAPIKey";  
+    process.env['MAILGUN_DOMAIN'] = "sandboxac29acbbcfd44ca0ab0e21a9829c3c44.mailgun.org";  
+    process.env['MAILGUN_API_URL'] = "https://api.mailgun.net/v3/sandboxac29acbbcfd44ca0ab0e21a9829c3c44.mailgun.org";
     Cloudinary.config({
       cloud_name: Meteor.settings.public.cloudinaryCloud,
       api_key: Meteor.settings.cloudinaryAPIKey,

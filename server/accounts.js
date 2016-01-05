@@ -1,0 +1,1 @@
+Accounts.emailTemplates.from = "Shoppinglab robot <no-reply@creating010.com>";
