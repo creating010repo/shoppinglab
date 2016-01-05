@@ -32,7 +32,7 @@ Template.usersList.events({
                 $('#economyInput-'+this._id)[0].value,
                 $('#bsr-'+this._id)[0].value,
                 $('#nfc-'+this._id)[0].value
-      )
+      );
   }
 });
 
